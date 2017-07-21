@@ -1,0 +1,8 @@
+.ipynb_checkpoints
+.cache/v/cache/lastfailed
+__pycache__
+notebooks/*.pdf
+*.egg-info
+.mypy_cache
+.vscode
+.venv
