@@ -1,5 +1,4 @@
 import numpy as np
-import scipy.signal
 from .utils import *
 
 __all__ = ['signal']

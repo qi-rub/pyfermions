@@ -15,7 +15,6 @@ def test_analyze_and_reconstruct():
 
 
 def test_reconstruct_and_analyze():
-    N = 100
     a = random_signal()
     b = random_signal()
     A, B = DAUBECHIES_D4.analyze(DAUBECHIES_D4.reconstruct(a, b))

@@ -1,5 +1,3 @@
-import numpy as np
-import scipy.signal
 from .signal import *
 
 __all__ = ['orthogonal_wavelet', 'DAUBECHIES_D4']
