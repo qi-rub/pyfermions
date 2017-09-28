@@ -75,6 +75,20 @@ class mera1d:
 
         return C
 
+    def covariance(self, stop, levels, start=None):
+        """Return covariance matrix <a_i^\dagger a_j> of subsystem {start,...,stop-1}."""
+        if start is None:
+            start = 0
+        x = np.arange(start, stop)
+        C = np.zeros(shape=(x.size, x.size))
+        for level in range(1, levels + 1):
+            psi = self.eigenmode(level)
+            for i, the_x in enumerate(x):
+                for j, the_y in enumerate(x):
+                    C[i, j] += psi.shift(-the_y).downsample(level + 1).vdot(
+                        psi.shift(-the_x).downsample(level + 1))
+        return C
+
     def h_scaling(self, level, k):
         """
         Return single-particle scaling Hamiltonian (renormalized Hamiltonian) at given level
