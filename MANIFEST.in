@@ -1,0 +1,8 @@
+include CONTRIBUTORS
+include LICENSE
+include README.md
+
+include docs/*.png
+include notebooks/*.ipynb
+include notebooks/*.csv
+global-exclude .*
