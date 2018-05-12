@@ -76,8 +76,9 @@ def test_hwlet_4_2_vs_matlab():
     ]
 
     h, g = selesnick_hwlet(4, 2)
-    assert np.allclose(h.scaling_filter, expected_h)
-    assert np.allclose(g.scaling_filter, expected_g)
+    assert h.scaling_filter.start == g.scaling_filter.start == 0
+    assert np.allclose(h.scaling_filter.data, expected_h)
+    assert np.allclose(g.scaling_filter.data, expected_g)
 
 
 def test_hwlet_7_3_vs_matlab():
@@ -101,5 +102,6 @@ def test_hwlet_7_3_vs_matlab():
     ]
 
     h, g = selesnick_hwlet(7, 3)
-    assert np.allclose(h.scaling_filter, expected_h)
-    assert np.allclose(g.scaling_filter, expected_g)
+    assert h.scaling_filter.start == g.scaling_filter.start == 0
+    assert np.allclose(h.scaling_filter.data, expected_h)
+    assert np.allclose(g.scaling_filter.data, expected_g)

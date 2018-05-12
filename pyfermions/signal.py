@@ -33,9 +33,11 @@ class signal:
     def __repr__(self):
         return 'signal(%r, start=%d)' % (self.data, self.start)
 
-    def __array__(self):
-        """Convert to numpy array."""
-        return np.array(self.data)
+    # this is dangerous to have (e.g. signal(other_signal) forgets the start index)
+    #
+    # def __array__(self):
+    #     """Convert to numpy array."""
+    #     return np.array(self.data)
 
     def to_pandas(self):
         from pandas import Series
