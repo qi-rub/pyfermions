@@ -6,3 +6,4 @@ notebooks/*.pdf
 .mypy_cache
 .vscode
 .venv
+.pytest_cache
