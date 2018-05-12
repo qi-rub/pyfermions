@@ -7,3 +7,5 @@ notebooks/*.pdf
 .vscode
 .venv
 .pytest_cache
+build/
+dist/
