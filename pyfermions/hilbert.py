@@ -37,8 +37,8 @@ def leja(a):
     c = np.argmax(np.abs(a))
     a[[c, 0]] = a[[0, c]]
     for k in range(1, n):
-        A = np.abs(a[:, np.newaxis][:, [0] * k] -
-                   a[np.newaxis, :k][[0] * n, :])
+        A = np.abs(
+            a[:, np.newaxis][:, [0] * k] - a[np.newaxis, :k][[0] * n, :])
         A = np.prod(A, -1)
         c = np.argmax(A)
         a[[k, c]] = a[[c, k]]

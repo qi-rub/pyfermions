@@ -32,8 +32,8 @@ def ctft(x, f, domega=0.01, omega_max=None):
     target_size = max(int(1 / (domega * dx) + 1), f.size)
     pad_left = (target_size - f.size) // 2
     pad_right = target_size - f.size - pad_left
-    x = np.r_[x[0] + np.arange(-pad_left, 0) * dx, x, x[-1] +
-              np.arange(1, pad_right + 1) * dx]
+    x = np.r_[x[0] + np.arange(-pad_left, 0) * dx, x,
+              x[-1] + np.arange(1, pad_right + 1) * dx]
     f = np.r_[np.zeros(pad_left), f, np.zeros(pad_right)]
 
     # approximate the continuous-time Fourier transform

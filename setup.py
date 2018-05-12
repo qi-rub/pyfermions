@@ -48,5 +48,6 @@ setup(
             'pypandoc',
             'pytest',
             'wheel',
+            'yapf',
         ],
     })
