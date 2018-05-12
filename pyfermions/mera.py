@@ -149,8 +149,8 @@ class mera2d:
 
         n = a_x.range
         m = a_y.range
-        a = np.outer(a_x, a_y)
-        b = np.outer(b_x, b_y)
+        a = np.outer(a_x.data, a_y.data)
+        b = np.outer(b_x.data, b_y.data)
         return n, m, a, b
 
     @staticmethod
