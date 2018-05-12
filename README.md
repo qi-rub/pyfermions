@@ -12,7 +12,8 @@ For details, please see [our paper](http://arxiv.org/abs/1707.06243).
   author={Jutho Haegeman and Brian Swingle and Michael Walter and Jordan Cotler and Glen Evenbly and Volkher B. Scholz},
   journal={Phys. Rev. X},
   year={2018},
-  note={in press},
+  volume={8},
+  pages={011003},
   eprint={1707.06243},
 }
 ```
