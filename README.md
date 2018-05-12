@@ -4,7 +4,7 @@ A Python package for rigorous free fermion entanglement renormalization from wav
 
 [![MERA for 1D free-fermion nearest-neighbor hopping Hamiltonian](docs/mera1d.png)](notebooks/mera1d.ipynb) [![Branching MERA for 2D free-fermion nearest-neighbor hopping Hamiltonian](docs/mera2d.png)](notebooks/mera2d.ipynb)
 
-For details, please see [our paper](http://arxiv.org/abs/1707.06243).
+For details, please see [our paper](https://journals.aps.org/prx/abstract/10.1103/PhysRevX.8.011003).
 
 ```
 @article{latticefermions,
