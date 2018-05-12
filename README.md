@@ -1,4 +1,4 @@
-# pyfermions ![Python 3.5+](https://img.shields.io/badge/python-3.5%2B-brightgreen.svg) [![Build Status](https://travis-ci.org/catch22/pyfermions.svg?branch=master)](https://travis-ci.org/catch22/pyfermions) [![arXiv](http://img.shields.io/badge/arXiv-1707.06243-blue.svg?style=flat)](http://arxiv.org/abs/1707.06243)
+# pyfermions ![Python 3.5+](https://img.shields.io/badge/python-3.5%2B-brightgreen.svg) [![Build Status](https://travis-ci.org/catch22/pyfermions.svg?branch=master)](https://travis-ci.org/catch22/pyfermions) [![arXiv](http://img.shields.io/badge/arXiv-1707.06243-blue.svg?style=flat)](http://arxiv.org/abs/1707.06243) [![Latest Version](https://img.shields.io/pypi/v/pyfermions.svg)](https://pypi.python.org/pypi/pyfermions/)
 
 A Python package for rigorous free fermion entanglement renormalization from wavelet theory.
 
@@ -19,6 +19,14 @@ For details, please see [our paper](https://journals.aps.org/prx/abstract/10.110
 ```
 
 ## Installation
+
+To install the latest released version from PyPI:
+
+```
+pip install pyfermions
+```
+
+To install the bleeding-edge development version (likely unstable):
 
 ```
 pip install git+git://github.com/catch22/pyfermions
