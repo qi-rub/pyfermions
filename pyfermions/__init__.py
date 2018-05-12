@@ -1,4 +1,4 @@
-__version__ = '1.0dev0'
+__version__ = '1.0'
 
 from .utils import *
 from .signal import *
