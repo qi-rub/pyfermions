@@ -11,11 +11,6 @@ with open('pyfermions/__init__.py', 'rb') as f:
 long_description = io.open(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), 'README.md'),
     encoding='utf-8').read()
-try:
-    import pypandoc
-    long_description = pypandoc.convert(long_description, 'rst', format='md')
-except ImportError:
-    pass
 
 setup(
     name='pyfermions',
@@ -23,6 +18,7 @@ setup(
     description=
     'Rigorous free fermion entanglement renormalization from wavelet theory',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     maintainer='Michael Walter',
     maintainer_email='michael.walter@stanford.edu',
     url='https://github.com/catch22/pyfermions',
@@ -45,9 +41,9 @@ setup(
     ],
     extras_require={
         'dev': [
-            'pypandoc',
             'pytest',
             'wheel',
             'yapf',
+            'twine',
         ],
     })
