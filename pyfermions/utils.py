@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.fftpack
 
-__all__ = ['convmtx', 'ctft', 'dtft', 'dtft2d']
+__all__ = ["convmtx", "ctft", "dtft", "dtft2d"]
 
 
 def convmtx(h, N):
@@ -32,8 +32,9 @@ def ctft(x, f, domega=0.01, omega_max=None):
     target_size = max(int(1 / (domega * dx) + 1), f.size)
     pad_left = (target_size - f.size) // 2
     pad_right = target_size - f.size - pad_left
-    x = np.r_[x[0] + np.arange(-pad_left, 0) * dx, x,
-              x[-1] + np.arange(1, pad_right + 1) * dx]
+    x = np.r_[
+        x[0] + np.arange(-pad_left, 0) * dx, x, x[-1] + np.arange(1, pad_right + 1) * dx
+    ]
     f = np.r_[np.zeros(pad_left), f, np.zeros(pad_right)]
 
     # approximate the continuous-time Fourier transform
@@ -53,20 +54,21 @@ def ctft(x, f, domega=0.01, omega_max=None):
 def dtft(n, s, omega):
     """Periodic Fourier transform of a discrete signal s[n]."""
     return np.sum(
-        s[:, np.newaxis] * np.exp(
-            -1j * n[:, np.newaxis] * omega[np.newaxis, :]),
-        axis=0)
+        s[:, np.newaxis] * np.exp(-1j * n[:, np.newaxis] * omega[np.newaxis, :]), axis=0
+    )
 
 
 def dtft2d(n, m, s, omega):
     """Periodic 2D Fourier transform of a discrete signal s[n,m]."""
     # sample discrete-time Fourier transform
     f_half = np.sum(
-        s[:, :, np.newaxis] * np.exp(-1j * m[np.newaxis, :, np.newaxis] *
-                                     omega[np.newaxis, np.newaxis, :]),
-        axis=1)
+        s[:, :, np.newaxis]
+        * np.exp(-1j * m[np.newaxis, :, np.newaxis] * omega[np.newaxis, np.newaxis, :]),
+        axis=1,
+    )
     f = np.sum(
-        f_half[:, np.newaxis, :] * np.exp(-1j * n[:, np.newaxis, np.newaxis] *
-                                          omega[np.newaxis, :, np.newaxis]),
-        axis=0)
+        f_half[:, np.newaxis, :]
+        * np.exp(-1j * n[:, np.newaxis, np.newaxis] * omega[np.newaxis, :, np.newaxis]),
+        axis=0,
+    )
     return f

@@ -1,7 +1,7 @@
 import numpy as np
 from .utils import *
 
-__all__ = ['signal']
+__all__ = ["signal"]
 
 
 class signal:
@@ -31,7 +31,7 @@ class signal:
         return 0
 
     def __repr__(self):
-        return 'signal(%r, start=%d)' % (self.data, self.start)
+        return "signal(%r, start=%d)" % (self.data, self.start)
 
     # this is dangerous to have (e.g. signal(other_signal) forgets the start index)
     #
@@ -41,6 +41,7 @@ class signal:
 
     def to_pandas(self):
         from pandas import Series
+
         return Series(data=self.data, index=self.range)
 
     def conj(self):
@@ -98,7 +99,7 @@ class signal:
 
     def modulate(self, z):
         """Return modulated signal s[n] = self[n] * z^n (z should be complex if n can be negative)."""
-        data = np.multiply(self.data, z**np.array(self.range))
+        data = np.multiply(self.data, z ** np.array(self.range))
         return signal(data, self.start)
 
     def reverse(self):
@@ -110,7 +111,7 @@ class signal:
         start = self.start
         data = self.data
         for _ in range(repeat):
-            data = data[start % 2::2]
+            data = data[start % 2 :: 2]
             start = (start + 1) // 2
         return signal(data, start)
 
@@ -140,8 +141,8 @@ class signal:
         stop = min(self.stop, other.stop)
 
         # truncate
-        a = self.data[start - self.start:stop - self.start]
-        b = other.data[start - other.start:stop - other.start]
+        a = self.data[start - self.start : stop - self.start]
+        b = other.data[start - other.start : stop - other.start]
         return start, stop, a, b
 
     def _union_align(self, other):
@@ -151,7 +152,7 @@ class signal:
         # pad by zeros
         a = np.zeros(stop - start, dtype=self.data.dtype)
         b = np.zeros(stop - start, dtype=other.data.dtype)
-        a[self.start - start:self.stop - start] = self.data
-        b[other.start - start:other.stop - start] = other.data
+        a[self.start - start : self.stop - start] = self.data
+        b[other.start - start : other.stop - start] = other.data
 
         return start, stop, a, b

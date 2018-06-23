@@ -4,7 +4,7 @@ from .signal import *
 from .wavelets import *
 from .hilbert import *
 
-__all__ = ['mera1d', 'mera2d']
+__all__ = ["mera1d", "mera2d"]
 
 
 class mera1d:
@@ -56,7 +56,7 @@ class mera1d:
         E = []
         for level in range(1, levels + 1):
             psi = self.eigenmode(level)
-            E.append(mera1d.energy_of_mode(psi) / 2**(level + 1))
+            E.append(mera1d.energy_of_mode(psi) / 2 ** (level + 1))
         return np.sum(E)
 
     def correlation(self, dx, levels, x=None):
@@ -70,8 +70,11 @@ class mera1d:
             for i, the_x in enumerate(x):
                 for j, the_dx in enumerate(dx):
                     the_y = the_x + the_dx
-                    C[i, j] += psi.shift(-the_y).downsample(level + 1).vdot(
-                        psi.shift(-the_x).downsample(level + 1))
+                    C[i, j] += (
+                        psi.shift(-the_y)
+                        .downsample(level + 1)
+                        .vdot(psi.shift(-the_x).downsample(level + 1))
+                    )
 
         return C
 
@@ -85,8 +88,11 @@ class mera1d:
             psi = self.eigenmode(level)
             for i, the_x in enumerate(x):
                 for j, the_y in enumerate(x):
-                    C[i, j] += psi.shift(-the_y).downsample(level + 1).vdot(
-                        psi.shift(-the_x).downsample(level + 1))
+                    C[i, j] += (
+                        psi.shift(-the_y)
+                        .downsample(level + 1)
+                        .vdot(psi.shift(-the_x).downsample(level + 1))
+                    )
         return C
 
     def h_scaling(self, level, k):
@@ -95,10 +101,7 @@ class mera1d:
         (level = 0 is the original Hamiltonian).
         """
         h_10 = self._h_renormalized(level, k)
-        return np.array([
-            [np.zeros_like(k), h_10.conj()],
-            [h_10, np.zeros_like(k)],
-        ])
+        return np.array([[np.zeros_like(k), h_10.conj()], [h_10, np.zeros_like(k)]])
 
     def e_scaling(self, level, k):
         """
@@ -120,8 +123,11 @@ class mera1d:
         H = self.h.wavelet_filter.ft if wavelet else self.h.scaling_filter.ft
         G = self.g.wavelet_filter.ft if wavelet else self.g.scaling_filter.ft
         a = G(k / 2).conj() * H(k / 2) * self._h_renormalized(level - 1, k / 2)
-        b = G(k / 2 + np.pi).conj() * H(k / 2 + np.pi) * self._h_renormalized(
-            level - 1, k / 2 + np.pi)
+        b = (
+            G(k / 2 + np.pi).conj()
+            * H(k / 2 + np.pi)
+            * self._h_renormalized(level - 1, k / 2 + np.pi)
+        )
         return (a + b) / 2
 
 
@@ -159,10 +165,12 @@ class mera2d:
         a = a / np.sqrt(2)
         b = b / np.sqrt(2)
 
-        E = np.tensordot(a.conj(), b) + np.tensordot(
-            b.conj()[:-1, :-1], a[1:, 1:]) - np.tensordot(
-                a.conj()[1:, :], b[:-1, :]) - np.tensordot(
-                    b.conj()[:, :-1], a[:, 1:])
+        E = (
+            np.tensordot(a.conj(), b)
+            + np.tensordot(b.conj()[:-1, :-1], a[1:, 1:])
+            - np.tensordot(a.conj()[1:, :], b[:-1, :])
+            - np.tensordot(b.conj()[:, :-1], a[:, 1:])
+        )
         return -2 * np.real(E)
 
     def energy(self, levels_x, levels_y):
@@ -172,5 +180,5 @@ class mera2d:
             for level_y in range(1, levels_y + 1):
                 n, m, a, b = self.eigenmode_pair(level_x, level_y)
                 e = mera2d.energy_of_mode_pair(n, m, a, b)
-                E.append(e / 2**(level_x + level_y + 1))
+                E.append(e / 2 ** (level_x + level_y + 1))
         return np.sum(E)

@@ -53,8 +53,7 @@ def test_upsample():
     assert a.upsample().isclose(signal([0, 0, 1, 0, 2, 0, 3, 0, 4, 0, 5]))
 
     a = signal([-3, -2, -1, 0, 1, 2], start=-3)
-    assert a.upsample().isclose(
-        signal([-3, 0, -2, 0, -1, 0, 0, 0, 1, 0, 2], start=-6))
+    assert a.upsample().isclose(signal([-3, 0, -2, 0, -1, 0, 0, 0, 1, 0, 2], start=-6))
 
     N = 100
     a = signal(np.random.rand(N), np.random.randint(-N, N))

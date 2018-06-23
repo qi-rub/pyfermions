@@ -5,8 +5,7 @@ from .wavelets import *
 
 def random_signal():
     N = 100
-    return signal(
-        np.random.rand(N) + 1j * np.random.rand(N), np.random.randint(-N, N))
+    return signal(np.random.rand(N) + 1j * np.random.rand(N), np.random.randint(-N, N))
 
 
 def test_analyze_and_reconstruct():
@@ -29,11 +28,11 @@ def test_scaling_from_reconstruct():
 
 def test_from_scaling_filter():
     assert orthogonal_wavelet.from_scaling_filter(
-        DAUBECHIES_D4.scaling_filter).wavelet_filter.isclose(
-            DAUBECHIES_D4.wavelet_filter)
+        DAUBECHIES_D4.scaling_filter
+    ).wavelet_filter.isclose(DAUBECHIES_D4.wavelet_filter)
 
 
 def test_from_wavelet_filter():
     assert orthogonal_wavelet.from_wavelet_filter(
-        DAUBECHIES_D4.wavelet_filter).scaling_filter.isclose(
-            DAUBECHIES_D4.scaling_filter)
+        DAUBECHIES_D4.wavelet_filter
+    ).scaling_filter.isclose(DAUBECHIES_D4.scaling_filter)
