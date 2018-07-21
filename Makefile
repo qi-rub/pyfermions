@@ -15,7 +15,7 @@ export-notebooks:
 	cd notebooks && jupyter nbconvert --to pdf *.ipynb
 
 pretty:
-	black --py36 pyfermions
+	black --py36 pyfermions setup.py
 
 upload-release:
 	python -c "import wheel"  # check upload dependencies
