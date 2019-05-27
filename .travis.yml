@@ -1,11 +1,13 @@
 language: python
 python:
-  - 3.6
-
+- 3.6
 install:
-  - "sudo apt-get update -qq"
-  - "pip install -e .[dev]"
-
+- sudo apt-get update -qq
+- pip install -e .[dev]
 script:
-  - "make test"
-  - "make run-notebooks"
+- make test
+- make run-notebooks
+notifications:
+  slack:
+    rooms:
+      secure: SUP4dlHt9CQA9hYwPD4bDE8nxQFtqNL/XnwxQJ03vWw/yROgQCW3h9xbui3mq+e1PXVv0HvatShJjQ3eLe4bGLrz+2jpm4tcNWyWaAgTC/KCqqOHtgDTLWKoDtcHeCNZ4F+Qe4p6ne0kPOauryHul81FnjSc0K6PulRKjQJoqobcWJxWVEZ9ekJeIlnNd6Q2recXe2tGTxti79DgLcFIdE9fx30eleq0/3h73iWAFpSPbgOZFLhMhCBMuK7ueIDWwEukB0KgVJPrXLx7XfXxZIXfIHk9XXGGjxsscvqoGPKwVh47I3oo03XE5k+nxMK1zb/L2j4UdI0WBsn+TxavWBEiCxFO3S/QO/TFKFAkTFvahSmaQQEZJmykho7mwogdZe5mo8ctqnTQR2FUcPMpebmXKMBPeLTH0OYpJqaZz8X1lCp1S+l6KubuJsvQQm2v3kqBZVk3PXj+i+I4fy1jSIChLaMs5KCyGEQuABgakFQfRXehyDEOT3ZRB7P96cb+lGtIG6Uarv/zpMut/d5n578ilk2bmBEO4U9/+1o09CrqCMIDKkqrdYwwmM7RlmXhkS80ffUf+rJXD1r4JTQ52PPOm6dRi5J7qLFgoQ+CMrAhL0py+oJA5HehnEXM6KCcJIIn0xcqYa3bFlLkll7wpQAsilDbRcp92vCrIRsUHz4=
