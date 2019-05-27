@@ -3,7 +3,8 @@ python:
 - 3.6
 install:
 - sudo apt-get update -qq
-- pip install -e .[dev]
+- pip install -Ue .[dev]
+- pip list
 script:
 - make test
 - make run-notebooks
