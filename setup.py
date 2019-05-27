@@ -20,8 +20,8 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     maintainer="Michael Walter",
-    maintainer_email="michael.walter@stanford.edu",
-    url="https://github.com/catch22/pyfermions",
+    maintainer_email="m.walter@uva.nl",
+    url="https://github.com/amsqi/pyfermions",
     license="MIT",
     classifiers=[
         "Development Status :: 3 - Alpha",
