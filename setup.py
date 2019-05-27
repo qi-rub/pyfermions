@@ -33,5 +33,7 @@ setup(
     ],
     packages=["pyfermions"],
     install_requires=["matplotlib", "numpy", "scipy", "pandas", "jupyter"],
-    extras_require={"dev": ["pytest", "wheel", "black", "twine"]},
+    extras_require={
+        "dev": ["pytest", "wheel", "black", "twine", "jupyter_contrib_nbextensions"]
+    },
 )
