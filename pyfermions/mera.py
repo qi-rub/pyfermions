@@ -38,8 +38,8 @@ class mera1d:
         """
         assert level >= 1
         a, b = self.eigenmode_pair(level, x)
-        a = a.modulate(-1.).upsample()
-        b = b.modulate(-1.).upsample().shift(1)
+        a = a.modulate(-1.0).upsample()
+        b = b.modulate(-1.0).upsample().shift(1)
         if not positive_energy:
             psi = (a + b) / np.sqrt(2)
         else:
@@ -79,7 +79,7 @@ class mera1d:
         return C
 
     def covariance(self, stop, levels, start=None):
-        """Return covariance matrix <a_i^\dagger a_j> of subsystem {start,...,stop-1}."""
+        """Return covariance matrix <a_i^\\dagger a_j> of subsystem {start,...,stop-1}."""
         if start is None:
             start = 0
         x = np.arange(start, stop)

@@ -17,13 +17,13 @@ class orthogonal_wavelet:
     def from_scaling_filter(scaling_filter):
         """Construct orthogonal wavelet from scaling filter."""
         # could also use scipy.signal.qmf() and translate manually
-        wavelet_filter = -scaling_filter.conj().modulate(-1.).shift(-1).reverse()
+        wavelet_filter = -scaling_filter.conj().modulate(-1.0).shift(-1).reverse()
         return orthogonal_wavelet(scaling_filter, wavelet_filter)
 
     @staticmethod
     def from_wavelet_filter(wavelet_filter):
         """Construct orthogonal wavelet from wavelet filter."""
-        scaling_filter = -wavelet_filter.reverse().shift(1).modulate(-1.).conj()
+        scaling_filter = -wavelet_filter.reverse().shift(1).modulate(-1.0).conj()
         return orthogonal_wavelet(scaling_filter, wavelet_filter)
 
     def analyze(self, s):
@@ -63,7 +63,7 @@ class orthogonal_wavelet:
 
 
 DAUBECHIES_D4_SCALING_FILTER = signal(
-    [0.482962913145, 0.836516303738, 0.224143868042, -0.129409522551]
+    [0.482_962_913_145, 0.836_516_303_738, 0.224_143_868_042, -0.129_409_522_551]
 )
 
 DAUBECHIES_D4 = orthogonal_wavelet.from_scaling_filter(DAUBECHIES_D4_SCALING_FILTER)

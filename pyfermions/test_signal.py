@@ -20,7 +20,7 @@ def test_modulate():
     a = signal([-3, -2, -1, 0, 1, 2, 3, 4], start=-3)
     A = signal([3, -2, 1, 0, -1, 2, -3, 4], start=-3)
     assert a.modulate(-1 + 0j).isclose(A)
-    assert a.modulate(-1.).isclose(A)
+    assert a.modulate(-1.0).isclose(A)
 
 
 def test_reverse():

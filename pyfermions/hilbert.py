@@ -158,8 +158,12 @@ def evenbly_white_hwlet():
     """
     Return Evenbly-White's filter pair of length 4.
     """
-    h_s = signal(np.array([-0.12940952, 0.22414387, 0.8365163, 0.48296291]), start=-2)
-    g_s = signal(np.array([0.48296291, 0.8365163, 0.22414387, -0.12940952]), start=0)
+    h_s = signal(
+        np.array([-0.129_409_52, 0.224_143_87, 0.836_516_3, 0.482_962_91]), start=-2
+    )
+    g_s = signal(
+        np.array([0.482_962_91, 0.836_516_3, 0.224_143_87, -0.129_409_52]), start=0
+    )
     h = orthogonal_wavelet.from_scaling_filter(h_s)
     g = orthogonal_wavelet.from_scaling_filter(g_s)
     return h, g
