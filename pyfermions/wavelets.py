@@ -44,15 +44,15 @@ class orthogonal_wavelet:
 
     def scaling_function(self, L):
         """Return scaling function at dyadic approximation 2^{-L}."""
-        s = self._casade(L, scaling=signal([1]))
+        s = self._cascade(L, scaling=signal([1]))
         return s.range * 2 ** -L, s.data * 2 ** (L / 2)
 
     def wavelet_function(self, L):
         """Return wavelet function at dyadic approximation 2^{-L}."""
-        s = self._casade(L, wavelet=signal([1]))
+        s = self._cascade(L, wavelet=signal([1]))
         return s.range * 2 ** -L, s.data * 2 ** (L / 2)
 
-    def _casade(self, L, wavelet=None, scaling=None):
+    def _cascade(self, L, wavelet=None, scaling=None):
         """Starting from scaling and wavelet coefficients at level L, return output of inverse wavelet transform."""
         # there is some numerical instability in scipy's implementation of the cascade algorithm (as compared to our code
         # below and to Matlab's wavefun); otherwise we could simply use scipy.signal.cascade(self.scaling_filter.data, L)
