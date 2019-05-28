@@ -53,7 +53,10 @@ class orthogonal_wavelet:
         return s.range * 2 ** -L, s.data * 2 ** (L / 2)
 
     def _cascade(self, L, wavelet=None, scaling=None):
-        """Starting from scaling and wavelet coefficients at level L, return output of inverse wavelet transform."""
+        """
+        Starting from scaling and wavelet coefficients at level L, return output of inverse wavelet transform.
+        This is known as the cascade algorithm.
+        """
         # there is some numerical instability in scipy's implementation of the cascade algorithm (as compared to our code
         # below and to Matlab's wavefun); otherwise we could simply use scipy.signal.cascade(self.scaling_filter.data, L)
         s = self.reconstruct(scaling=scaling, wavelet=wavelet)
