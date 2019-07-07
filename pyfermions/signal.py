@@ -86,6 +86,14 @@ class signal:
         """Unary negation."""
         return signal(-self.data, self.start)
 
+    def __pow__(self, exp):
+        """Unary negation."""
+        return signal(self.data ** exp, self.start)
+
+    def abs(self):
+        """Absolute value."""
+        return signal(np.abs(self.data), self.start)
+
     def vdot(self, other):
         """Hermitian dot product (anti-linear in first argument)."""
         start, stop, a, b = self._intersect_align(other)

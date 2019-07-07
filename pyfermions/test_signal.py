@@ -16,6 +16,16 @@ def test_sub():
     assert a.isclose(signal([1, -3 + 2j, -4], start=-1))
 
 
+def test_pow():
+    a = signal([2, 2j], start=2) ** 2
+    assert a.isclose(signal([4, -4], start=2))
+
+
+def test_abs():
+    a = signal([-3, 2j, 1 - 1j], start=1).abs()
+    assert a.isclose(signal([3, 2, np.sqrt(2)], start=1))
+
+
 def test_modulate():
     a = signal([-3, -2, -1, 0, 1, 2, 3, 4], start=-3)
     A = signal([3, -2, 1, 0, -1, 2, -3, 4], start=-3)
