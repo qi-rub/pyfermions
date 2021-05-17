@@ -144,6 +144,8 @@ def selesnick_hwlet(K, L, min_phase=False):
     b = np.zeros(2 * (K + L) - 1)
     b[K + L - 1] = 1
     r = np.linalg.solve(A, b)
+    r = (r + r[::-1]) / 2
+    assert np.allclose(A @ r, b)
 
     # find spectral factor Q(z) and compute filter for z^K F(z)
     q = sfact(r, min_phase=min_phase)
