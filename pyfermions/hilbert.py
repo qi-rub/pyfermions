@@ -52,6 +52,7 @@ def sfact(h, min_phase=False, eps=1e-5):
     This code is inspired by Selesnick's sfactM.m and sfact.m.
     """
     assert len(h) % 2 == 1, "Polynomial should have even degree."
+    h = np.array(h)
     assert np.isclose(
         np.linalg.norm(h - h[::-1]) / np.linalg.norm(h), 0
     ), "Coefficient sequence should be symmetric."
@@ -62,7 +63,7 @@ def sfact(h, min_phase=False, eps=1e-5):
 
     # classify roots on unit circle
     roots_circ = roots[np.abs(np.abs(roots) - 1) < eps]
-    if min_phase and roots_circ:
+    if min_phase and len(roots_circ) > 0:
         raise NotImplementedError
 
     plus_one = np.abs(roots_circ - 1) < eps
@@ -109,8 +110,8 @@ def sfact(h, min_phase=False, eps=1e-5):
 
     # build corresponding polynomial
     g = np.poly(roots)
-    if isreal:
-        g = np.real(g)
+    # if isreal:
+    #     g = np.real(g)
     g = g * np.sqrt(h[-1] / (g[0] * g[-1]))
     if min(g) + max(g) < 0:
         g = -g
