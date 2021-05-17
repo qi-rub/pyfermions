@@ -46,7 +46,7 @@ def sfact(h, min_phase=False, eps=1e-5):
     """
     Return a mid-phase (or min-phase) spectral factorization of the polynomial h of degree 2n; i.e., a polynomial g of degree n such that
 
-      h(X) = X^n g(X) g(1/X)
+      h(X) = X^n g(X) g_conj(1/X)
 
     The min_phase parameter is ignored if h is a complex signal.
     This code is inspired by Selesnick's sfactM.m and sfact.m.
@@ -54,8 +54,8 @@ def sfact(h, min_phase=False, eps=1e-5):
     assert len(h) % 2 == 1, "Polynomial should have even degree."
     h = np.array(h)
     assert np.isclose(
-        np.linalg.norm(h - h[::-1]) / np.linalg.norm(h), 0
-    ), "Coefficient sequence should be symmetric."
+        np.linalg.norm(h - h[::-1].conj()) / np.linalg.norm(h), 0
+    ), "Coefficient sequence should be Hermitian."
     isreal = np.all(np.isreal(h))
 
     # find roots of original polynomials
@@ -63,38 +63,29 @@ def sfact(h, min_phase=False, eps=1e-5):
 
     # classify roots on unit circle
     roots_circ = roots[np.abs(np.abs(roots) - 1) < eps]
+    assert (
+        len(roots_circ) % 2 == 0
+    ), "There should be an even number of roots of unit modulus."
     if min_phase and len(roots_circ) > 0:
         raise NotImplementedError
 
+    # all roots on unit circle should appear an even number of times
     plus_one = np.abs(roots_circ - 1) < eps
-    minus_one = np.abs(roots_circ + 1) < eps
-    others = ~(plus_one | minus_one)
-    pos_angle = (np.angle(roots_circ) > 0) & others
-    neg_angle = (np.angle(roots_circ) < 0) & others
-
+    others = ~plus_one
     num_plus_one = sum(plus_one)
-    num_minus_one = sum(minus_one)
-    num_pos_angle = sum(pos_angle)
-    num_neg_angle = sum(neg_angle)
     assert num_plus_one % 2 == 0, "The root +1 should appear an even number of times."
-    assert num_minus_one % 2 == 0, "The root -1 should appear an even number of times."
-    assert (
-        num_pos_angle == num_neg_angle
-    ), "Should have as many eigenvalues e^{i phi} as e^{-i phi}."
-    assert num_plus_one + num_minus_one + num_pos_angle + num_neg_angle == len(
-        roots_circ
-    )
 
-    # collect half the +1's, half the -1's, and the intersperse positive with negative ones (to increase numerical stability)
-    roots_pos_angle = roots_circ[pos_angle]
+    roots_circ_other = roots_circ[others]
+    roots_circ_other = roots_circ_other[np.argsort(np.angle(roots_circ_other))]
+    roots_circ_other = (roots_circ_other[::2] + roots_circ_other[1::2]) / 2
+
+    # collect half the +1's and half of all other roots
     roots_circ = np.r_[
-        roots_pos_angle[::2],
-        1 / roots_pos_angle[1::2],
+        roots_circ_other,
         [+1] * (num_plus_one // 2),
-        [-1] * (num_minus_one // 2),
     ]
 
-    # roots inside unit disk
+    # roots inside unit disk (those should come in complex conjugate pairs, unless they are real)
     roots_int = roots[np.abs(roots) <= 1 - eps]
     if isreal and not min_phase:
         pos_imags, reals = scipy.signal.filter_design._cplxreal(roots_int)
@@ -110,14 +101,12 @@ def sfact(h, min_phase=False, eps=1e-5):
 
     # build corresponding polynomial
     g = np.poly(roots)
-    # if isreal:
-    #     g = np.real(g)
     g = g * np.sqrt(h[-1] / (g[0] * g[-1]))
     if min(g) + max(g) < 0:
         g = -g
 
     # check that g is indeed a spectral factor of h
-    assert signal(h).isclose(signal(np.convolve(g, g[::-1])))
+    assert signal(h).isclose(signal(np.convolve(g, g[::-1].conj())))
     return g
 
 
