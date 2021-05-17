@@ -52,6 +52,9 @@ def sfact(h, min_phase=False, eps=1e-5):
     This code is inspired by Selesnick's sfactM.m and sfact.m.
     """
     assert len(h) % 2 == 1, "Polynomial should have even degree."
+    assert np.isclose(
+        np.linalg.norm(h - h[::-1]) / np.linalg.norm(h), 0
+    ), "Coefficient sequence should be symmetric."
     isreal = np.all(np.isreal(h))
 
     # find roots of original polynomials
