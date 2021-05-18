@@ -1,4 +1,4 @@
-# pyfermions ![Python 3.5+](https://img.shields.io/badge/python-3.5%2B-brightgreen.svg) [![Build Status](https://travis-ci.org/amsqi/pyfermions.svg?branch=master)](https://travis-ci.org/amsqi/pyfermions) [![arXiv](http://img.shields.io/badge/arXiv-1707.06243-blue.svg?style=flat)](http://arxiv.org/abs/1707.06243) [![Latest Version](https://img.shields.io/pypi/v/pyfermions.svg)](https://pypi.python.org/pypi/pyfermions/)
+# pyfermions ![Python 3.5+](https://img.shields.io/badge/python-3.8%2B-brightgreen.svg) [![Build Status](https://travis-ci.org/amsqi/pyfermions.svg?branch=master)](https://travis-ci.org/amsqi/pyfermions) [![arXiv](http://img.shields.io/badge/arXiv-1707.06243-blue.svg?style=flat)](http://arxiv.org/abs/1707.06243) [![Latest Version](https://img.shields.io/pypi/v/pyfermions.svg)](https://pypi.python.org/pypi/pyfermions/)
 
 A Python package for rigorous free fermion entanglement renormalization from wavelet theory.
 
