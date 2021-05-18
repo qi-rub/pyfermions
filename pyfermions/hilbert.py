@@ -85,7 +85,7 @@ def sfact(h, min_phase=False, eps=1e-5):
         [+1] * (num_plus_one // 2),
     ]
 
-    # roots inside unit disk (those should come in complex conjugate pairs, unless they are real)
+    # roots inside unit disk (for a polynomial with real coefficients, those roots should come in complex conjugate pairs unless they are real)
     roots_int = roots[np.abs(roots) <= 1 - eps]
     if isreal and not min_phase:
         pos_imags, reals = scipy.signal.filter_design._cplxreal(roots_int)
@@ -106,7 +106,7 @@ def sfact(h, min_phase=False, eps=1e-5):
         g = -g
 
     # check that g is indeed a spectral factor of h
-    assert signal(h).isclose(signal(np.convolve(g, g[::-1].conj())))
+    assert np.allclose(np.convolve(g, g[::-1].conj()), h, atol=0), "No spectral factor"
     return g
 
 
