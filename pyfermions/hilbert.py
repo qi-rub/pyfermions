@@ -53,8 +53,8 @@ def sfact(h, min_phase=False, eps=1e-5):
     """
     assert len(h) % 2 == 1, "Polynomial should have even degree."
     h = np.array(h)
-    assert np.isclose(
-        np.linalg.norm(h - h[::-1].conj()) / np.linalg.norm(h), 0
+    assert np.allclose(
+        h, h[::-1].conj(), atol=0
     ), "Coefficient sequence should be Hermitian."
     isreal = np.all(np.isreal(h))
 
