@@ -10,6 +10,7 @@ run-notebooks:
 	jupyter nbconvert --execute --inplace notebooks/mera1d.ipynb
 	jupyter nbconvert --execute --inplace notebooks/mera2d.ipynb
 	jupyter nbconvert --execute --inplace notebooks/selesnick.ipynb
+	jupyter nbconvert --execute --inplace notebooks/bosonic-mera.ipynb
 
 export-notebooks:
 	cd notebooks && jupyter nbconvert --to pdf *.ipynb
