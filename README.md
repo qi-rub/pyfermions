@@ -2,7 +2,7 @@
 
 A Python package for rigorous free fermionic (and bosonic) entanglement renormalization from wavelet theory.
 
-[![MERA for 1D free-fermion nearest-neighbor hopping Hamiltonian](docs/mera1d.png)](notebooks/mera1d.ipynb) [![Branching MERA for 2D free-fermion nearest-neighbor hopping Hamiltonian](docs/mera2d.png)](notebooks/mera2d.ipynb)
+[![MERA for 1D free-fermion nearest-neighbor hopping Hamiltonian](https://github.com/amsqi/pyfermions/raw/master/docs/mera1d.png)](https://github.com/amsqi/pyfermions/tree/master/notebooks/mera1d.ipynb) [![Branching MERA for 2D free-fermion nearest-neighbor hopping Hamiltonian](https://github.com/amsqi/pyfermions/raw/master/docs/mera2d.png)](https://github.com/amsqi/pyfermions/tree/master/notebooks/mera2d.ipynb)
 
 For details, please see the following three papers:
 
@@ -63,12 +63,12 @@ pip install git+git://github.com/amsqi/pyfermions
 
 ## Getting Started
 
-Now download and explore some of the [Jupyter notebooks](notebooks).
-The [mera1d](notebooks/mera1d.ipynb) notebook is a good starting point.
+Now download and explore some of the [Jupyter notebooks](https://github.com/amsqi/pyfermions/tree/master/notebooks).
+The [mera1d](https://github.com/amsqi/pyfermions/tree/master/notebooks/mera1d.ipynb) notebook is a good starting point.
 
 ## Contributing
 
-The contributors are listed [here](CONTRIBUTORS).
+The contributors are listed [here](https://github.com/amsqi/pyfermions/tree/master/CONTRIBUTORS).
 
 ```
 git clone git://github.com/amsqi/pyfermions
