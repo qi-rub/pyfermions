@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     maintainer="Michael Walter",
-    maintainer_email="m.walter@uva.nl",
+    maintainer_email="michael.walter@gmail.com",
     url="https://github.com/amsqi/pyfermions",
     license="MIT",
     classifiers=[
