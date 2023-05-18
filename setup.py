@@ -21,7 +21,7 @@ setup(
     long_description_content_type="text/markdown",
     maintainer="Michael Walter",
     maintainer_email="michael.walter@gmail.com",
-    url="https://github.com/amsqi/pyfermions",
+    url="https://github.com/qi-rub/pyfermions",
     license="MIT",
     classifiers=[
         "Development Status :: 3 - Alpha",
