@@ -88,7 +88,7 @@ def sfact(h, min_phase=False, eps=1e-5):
     # roots inside unit disk (for a polynomial with real coefficients, those roots should come in complex conjugate pairs unless they are real)
     roots_int = roots[np.abs(roots) <= 1 - eps]
     if isreal and not min_phase:
-        pos_imags, reals = scipy.signal.filter_design._cplxreal(roots_int)
+        pos_imags, reals = scipy.signal._filter_design._cplxreal(roots_int)
         A1 = np.r_[pos_imags[::2], pos_imags[::2].conj()]
         A2 = np.r_[pos_imags[1::2], pos_imags[1::2].conj()]
         imags = np.r_[1 / A1, A2]
