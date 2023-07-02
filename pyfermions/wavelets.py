@@ -45,12 +45,12 @@ class orthogonal_wavelet:
     def scaling_function(self, L):
         """Return scaling function at dyadic approximation 2^{-L}."""
         s = self._cascade(L, scaling=signal([1]))
-        return s.range * 2 ** -L, s.data * 2 ** (L / 2)
+        return s.range * 2**-L, s.data * 2 ** (L / 2)
 
     def wavelet_function(self, L):
         """Return wavelet function at dyadic approximation 2^{-L}."""
         s = self._cascade(L, wavelet=signal([1]))
-        return s.range * 2 ** -L, s.data * 2 ** (L / 2)
+        return s.range * 2**-L, s.data * 2 ** (L / 2)
 
     def _cascade(self, L, wavelet=None, scaling=None):
         """

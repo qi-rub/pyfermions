@@ -88,7 +88,7 @@ class signal:
 
     def __pow__(self, exp):
         """Unary negation."""
-        return signal(self.data ** exp, self.start)
+        return signal(self.data**exp, self.start)
 
     def abs(self):
         """Absolute value."""
